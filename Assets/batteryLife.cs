@@ -27,30 +27,29 @@ public class batteryLife : MonoBehaviour
         //     greenScreen.SetActive(false);
         // }
 
-        if (Input.GetKeyDown(KeyCode.P)){
+        if (Input.GetKeyDown(KeyCode.P) && script.count > 0){
             NightVisionOn = true;
         }
-        if (NightVisionOn == true){
+        // if (Input.GetKeyDown(KeyCode.P) && NightVisionOn){
+        //     NightVisionOff = true;
+        // }
+    }
+
+    public void CheckTime(){
+         if (timeValue > 0 && NightVisionOn){
+            timeValue -= Time.deltaTime;
+            countTimer.text = timeValue.ToString();
             greenScreen.SetActive(true);
         }
-        if (NightVisionOn == true && Input.GetKeyDown(KeyCode.P)){
+        else{
+            timeValue = timeValue;
+            countTimer.text = timeValue.ToString();
             greenScreen.SetActive(false);
         }
-
     }
 
     void Update(){
         CheckVision();
-        if (timeValue > 0 && NightVisionOn){
-            timeValue -= Time.deltaTime;
-            countTimer.text = timeValue.ToString();
-        }
-        if (script.count > 0 && timeValue > 0){
-            timeValue = 10;
-            greenScreen.SetActive(false);
-        }
-        else{
-            greenScreen.SetActive(false);
-        }
+        CheckTime();
     }
 }
