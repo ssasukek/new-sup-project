@@ -13,6 +13,11 @@ public class trigger : MonoBehaviour
             Destroy(other.gameObject);
             ui_item.instance.CountItem();
         }
+        if (other.gameObject.tag == "Goggles")
+        {
+            Destroy(other.gameObject);
+            ui_item.instance.CountItem();
+        }
     }
 
     void Update(){
