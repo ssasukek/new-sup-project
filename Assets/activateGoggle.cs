@@ -6,20 +6,29 @@ using UnityEngine.UI;
 public class activateGoggle : MonoBehaviour
 {
     public GameObject greenScreen;
-    public GameObject timerScreen;
+    // public GameObject timerScreen;
     public Text countTimer;
     public float goggleTime = 10;
     public float batteryTime = 10;
-    public bool NightVisionOn;
+    public bool NightVisionOn = false;
+    public GameObject zombie;
+
 
     void Start(){
         countTimer.text = goggleTime.ToString();
+        zombie = GameObject.FindGameObjectWithTag("Zomb");
+        zombie.GetComponent<Renderer>().enabled = false;
     }
 
     void Update(){
         CheckTime();
-        TurnOnGoggle();
         AddMoreTime();
+        if (Input.GetKeyDown("g") && NightVisionOn == false){
+            TurnOnGoggle();
+        }
+        else if (Input.GetKeyDown("g") && NightVisionOn == true){
+            TurnOffGoggle();
+        }
     }
 
     public void CheckTime(){
@@ -34,16 +43,18 @@ public class activateGoggle : MonoBehaviour
     }
 
     public void TurnOnGoggle(){
-        if (Input.GetKeyDown("g")){
-            greenScreen.SetActive(true);
-            timerScreen.SetActive(true);
-            NightVisionOn = true;
-            Debug.Log("goggle on, plus " + goggleTime);
-        }
-        // if (Input.GetKeyDown("g") && NightVisionOn){
-        //     greenScreen.SetActive(false);
-        //     goggleTime -= 0;
-        // }
+        greenScreen.SetActive(true);
+        // timerScreen.SetActive(true);
+        NightVisionOn = true;
+        zombie.GetComponent<Renderer>().enabled = true;
+    }
+
+    public void TurnOffGoggle(){
+        NightVisionOn = false;
+        greenScreen.SetActive(false);
+        // timerScreen.SetActive(false);
+        goggleTime -= 0;
+        zombie.GetComponent<Renderer>().enabled = false;
     }
 
     public void AddMoreTime(){
