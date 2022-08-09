@@ -8,8 +8,6 @@ public class ui_item : MonoBehaviour
     public static ui_item instance;
     public Text countText;
     public int count = 0;
-    public GameObject greenScreen;
-    public GameObject timerScreen;
 
     private void Awake(){
         instance = this;
@@ -28,11 +26,9 @@ public class ui_item : MonoBehaviour
         if (count > 0){
             count--;
             countText.text = count.ToString();
-            timerScreen.SetActive(true);
         }
         else{
             Debug.Log("No more battery");
-            timerScreen.SetActive(false);
         }
     }
 }

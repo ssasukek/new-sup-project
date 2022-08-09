@@ -21,7 +21,7 @@ public class trigger : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.P)){
+        if (Input.GetKeyDown("p")){ //pressing p will use the battery and put into the goggle
             ui_item.instance.RemoveCountItem();
         }
     }
