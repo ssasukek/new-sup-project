@@ -39,6 +39,7 @@ public class activateGoggle : MonoBehaviour
         else{
             greenScreen.SetActive(false);
             NightVisionOn = false;
+            zombie.GetComponent<Renderer>().enabled = false;
         }
     }
 
