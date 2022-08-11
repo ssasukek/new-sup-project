@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Battery
-  - Zomb
+  - Target
+  - runStep
+  - footStep
+  - Goggles
   layers:
   - Default
   - TransparentFX
