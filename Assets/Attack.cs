@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    public AudioSource attackSound;
     public Animator ZombieAnimations;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Attack : MonoBehaviour
         Debug.Log("attack");
         ZombieAnimations.SetBool("IsRunning", false);
         ZombieAnimations.SetTrigger("DoAttack");
+        attackSound.Play();
         
     }
 }
